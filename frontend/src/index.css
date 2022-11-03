@@ -1,13 +1,72 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --background-color: #c3f5db;
+  --primary-color: #7dace4;
+  --secondary-color: #95e8d7;
+  --accent-color: #8971d0;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+}
+.container {
+  width: 600px;
+  margin: 20px auto;
+}
+.message-form {
+  background-color: var(--primary-color);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 9px var(--secondary-color);
+}
+.input-group {
+  margin-bottom: 1rem;
+}
+.input-group label,
+.input-group input,
+.input-group textarea {
+  display: block;
+  width: 100%;
+}
+.input-group label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--accent-color);
+}
+.input-group input,
+.input-group textarea {
+  border-radius: 0.5rem;
+  border: 1px solid var(--accent-color);
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: var(--secondary-color);
+}
+.input-group textarea {
+  resize: vertical;
+}
+.input-group input :focus,
+.input-group textarea :focus {
+  outline: none;
+  box-shadow: 0 0 1.5rem var(--primary-color);
+}
+.error-message{
+  margin-bottom: 1rem;
+  color: rgb(220, 30, 30);
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.btn{
+  padding: 1em 2.5em;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 0.5em;
+  border: 0;
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+  cursor: pointer;
 }
