@@ -1,6 +1,8 @@
 import { useState } from "react";
-import MessageForm from "./components/MessageForm";
-import Messages from "./components/Messages";
+import MessageForm from "./views/MessageForm";
+import Messages from "./views/Messages";
+import Navbar from "./components/Navbar";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [messages, setMessages] = useState([
@@ -22,10 +24,15 @@ function App() {
     setMessages((state) => [...state, message]);
   };
   return (
-    <div className="container">
-      <MessageForm addMessage={addMessage} />
-      <Messages messages={messages} />
-    </div>
+    <>
+      <Navbar />
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Messages messages={messages} />} />
+          <Route path="/addMessage" element={<><MessageForm addMessage={addMessage} /><Messages messages={messages} /></>} />
+        </Routes>
+      </div>
+    </>
   );
 }
 

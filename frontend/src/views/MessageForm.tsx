@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const MessageForm = ({ addMessage }: any) => {
-  const [error, setError] = useState("error message");
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     title: "",
     body: "",
