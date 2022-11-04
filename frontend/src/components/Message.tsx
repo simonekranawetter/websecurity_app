@@ -1,4 +1,10 @@
-import React from "react"
+import DOMPurify from "dompurify";
+import React from "react";
+
+const config = {
+  ALLOWED_TAGS: ['b', '#text'],
+  ADD_TAGS: ['i', '#text']
+};
 const Message = ({
   message,
 }: {
@@ -12,7 +18,11 @@ const Message = ({
         </div>
         <h2>{message.title}</h2>
       </div>
-      <div className="message-body">{message.body}</div>
+      <div
+        className="message-body"
+        dangerouslySetInnerHTML={{
+          __html: DOMPurify.sanitize(message.body, config),
+        }}></div>
     </div>
   );
 };
