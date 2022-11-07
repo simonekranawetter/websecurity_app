@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Avatar } from "./Avatar";
 
 const Navbar = () => {
-    const isAuthenticated = false;
+    const isAuthenticated = true;
 
   return (
     <nav className="navbar">

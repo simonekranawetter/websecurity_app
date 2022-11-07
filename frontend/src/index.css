@@ -17,13 +17,14 @@ body {
   width: 600px;
   margin: 30px auto;
 }
-.message-form, .message {
+.message-form,
+.message {
   background-color: var(--primary-color);
   padding: 1rem;
   border-radius: 1rem;
   box-shadow: 3px 3px 9px var(--secondary-color);
 }
-h2{
+h2 {
   color: var(--accent-color);
 }
 .input-group {
@@ -57,13 +58,14 @@ h2{
   outline: none;
   box-shadow: 0 0 1.5rem var(--primary-color);
 }
-.error-message{
+.error-message {
   margin-bottom: 1rem;
   color: rgb(220, 30, 30);
   font-size: 1.1rem;
   font-weight: bold;
 }
-.btn, .login-btn{
+.btn,
+.login-btn {
   padding: 0.6em 2.5em;
   font-weight: bold;
   font-size: 1rem;
@@ -73,22 +75,22 @@ h2{
   color: var(--secondary-color);
   cursor: pointer;
 }
-.btn:hover{
+.btn:hover {
   background-color: var(--secondary-color);
   color: var(--accent-color);
 }
-.login-btn:hover{
+.login-btn:hover, .logout-btn:hover {
   background-color: var(--primary-color);
   color: var(--accent-color);
 }
-.sub-title{
+.sub-title {
   text-align: center;
   margin-top: 2rem;
 }
-.message{
+.message {
   margin-top: 1rem;
 }
-.img-container{
+.img-container {
   width: 30%;
 }
 img {
@@ -96,20 +98,20 @@ img {
   height: 100%;
   object-fit: cover;
 }
-.message-header{
+.message-header {
   display: flex;
 }
-.message-header h2{
+.message-header h2 {
   text-align: center;
   flex: 1;
   align-self: center;
 }
-.message-body{
+.message-body {
   border-top: 1px solid var(--accent-color);
   margin-top: 1rem;
   padding-top: 1rem;
 }
-.flex{
+.flex {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -121,11 +123,11 @@ img {
   width: 600px;
   margin: 0 auto;
 }
-.navbar-nav{
+.navbar-nav {
   list-style: none;
   gap: 2rem;
 }
-.nav-link{
+.nav-link {
   text-decoration: none;
   color: var(--accent-color);
   padding: 1rem;
@@ -133,9 +135,41 @@ img {
   font-weight: bold;
   font-size: 1.2rem;
 }
-.nav-link.active{
+.nav-link.active {
   background-color: var(--background-color);
 }
-.nav-link:hover{
+.nav-link:hover {
   background-color: var(--primary-color);
+}
+.avatar-dropdown {
+  position: relative;
+}
+.avatar {
+  width: 100%;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+.dropdown {
+  position: absolute;
+  width: 150px;
+  background-color: var(--secondary-color);
+  padding: 0.6rem;
+  box-shadow: 2px 2px 6px var(--accent-color);
+  border-radius: 0.4rem;
+  right: 0;
+  bottom: -1rem;
+  transform: translateY(100%);
+}
+.logout-btn {
+  width: 100%;
+  padding: 0.5em;
+  border: 0;
+  border-radius: 0.5em;
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+  font-weight: bold;
+  cursor: pointer;
 }
