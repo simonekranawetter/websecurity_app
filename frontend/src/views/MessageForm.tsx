@@ -1,3 +1,4 @@
+import { withAuthenticationRequired } from "@auth0/auth0-react";
 import { useState } from "react";
 
 const MessageForm = ({ addMessage }: any) => {
@@ -51,4 +52,4 @@ const MessageForm = ({ addMessage }: any) => {
   );
 };
 
-export default MessageForm;
+export default withAuthenticationRequired(MessageForm);

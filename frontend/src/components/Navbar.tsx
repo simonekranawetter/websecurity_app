@@ -6,7 +6,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 const Navbar = () => {
   const { loginWithRedirect, isAuthenticated, user } = useAuth0();
 
-
   return (
     <nav className="navbar">
       <div className="nav-container flex">
@@ -16,13 +15,19 @@ const Navbar = () => {
               Messages
             </NavLink>
           </li>
-          <li>
-            <NavLink className="nav-link" to="/addMessage">
-              Add Message
-            </NavLink>
-          </li>
+          {isAuthenticated && (
+            <li>
+              <NavLink className="nav-link" to="/addMessage">
+                Add Message
+              </NavLink>
+            </li>
+          )}
         </ul>
-        {!isAuthenticated && <button onClick={() => loginWithRedirect()} className="login-btn">Log in</button>}
+        {!isAuthenticated && (
+          <button onClick={() => loginWithRedirect()} className="login-btn">
+            Log in
+          </button>
+        )}
         {isAuthenticated && <Avatar user={user} />}
       </div>
     </nav>
