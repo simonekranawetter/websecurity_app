@@ -1,4 +1,3 @@
-import { UserInfo } from "os";
 import { useState } from "react";
 import { Dropdown } from "./Dropdown";
 
