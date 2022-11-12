@@ -4,13 +4,13 @@ import Message from "../components/Message";
 const Messages = ({
   messages,
 }: {
-  messages: { id: number; title: string; body: string; imgUrl: string }[];
+  messages: { id: string; title: string; body: string; imgUrl: string }[] | any[];
 }) => {
   return (
     <>
       <h2 className="sub-title">Messages</h2>
       {messages &&
-        messages.map((message) => (
+        messages.map((message : { id: string; title: string; body: string; imgUrl: string }) => (
           <Message key={message.id} message={message} />
         ))}
     </>
