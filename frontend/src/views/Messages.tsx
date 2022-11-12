@@ -4,7 +4,7 @@ import Message from "../components/Message";
 const Messages = ({
   messages,
 }: {
-  messages: { id: string; title: string; body: string; imgUrl: string }[] | any[];
+  messages: { id: string; title: string; body: string; imgUrl: string }[];
 }) => {
   return (
     <>

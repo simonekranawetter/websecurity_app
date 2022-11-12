@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MessageForm from "./views/MessageForm";
 import Messages from "./views/Messages";
 import Navbar from "./components/Navbar";
@@ -6,14 +6,13 @@ import { Routes, Route } from "react-router-dom";
 import {getAllMessages} from "./api/GetAllMessages"
 
 function App() {
-  const [messages, setMessages] = useState([
-    {id: '111',
-    title: 'Fubaaar',
-    body: 'I am the night',
-    imgUrl: 'https://www.pngkey.com/png/full/17-179316_funny-png.png'
-  },
- //getAllMessages(),
-  ]);
+  const [messages, setMessages] = useState<Array<{id: string, title:string, body: string, imgUrl: string}>>([]);
+  useEffect(() => {
+    const fetchMessage = async () => {
+      setMessages(await getAllMessages())
+    }
+    fetchMessage()
+  }, [])
 
   const addMessage = (message: {
     id: string;

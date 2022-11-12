@@ -6,6 +6,7 @@ export async function getAllMessages(){
                 'Content-Type': 'application/json',
             },
         });
+        console.log(res)
         const result = await res.json();
         console.log('Gandalf!');
         console.log(result);
