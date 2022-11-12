@@ -8,7 +8,6 @@
     ".NETCoreApp,Version=v6.0": {
       "backendAPI/1.0.0": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "7.0.0",
           "Swashbuckle.AspNetCore": "6.2.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.0"
