@@ -28,6 +28,11 @@ const MessageForm = ({ addMessage }: any) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    const regex = /jpg|png$/gm;
+    if(!regex.test(formData.imgUrl)){
+      setError("Only jpg and png allowed!");
+      return;
+    }
     if (!formData.title || !formData.body || !formData.imgUrl) {
       setError("All fields are required!");
       return;
