@@ -4,7 +4,7 @@
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
-        public string Message { get; set; }
-        public string Img { get; set; }
+        public string Body { get; set; }
+        public string ImgUrl { get; set; }
     }
 }

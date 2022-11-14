@@ -12,7 +12,7 @@ using backendAPI;
 namespace backendAPI.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    [Migration("20221109114331_init")]
+    [Migration("20221114140605_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -31,11 +31,11 @@ namespace backendAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Img")
+                    b.Property<string>("Body")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Message")
+                    b.Property<string>("ImgUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

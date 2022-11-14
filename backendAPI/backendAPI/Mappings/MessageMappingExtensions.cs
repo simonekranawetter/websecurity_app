@@ -11,8 +11,8 @@ namespace backendAPI.Mappings
             {
                 Id = new Guid(),
                 Title = dto.Title,
-                Message = dto.Message,
-                Img = dto.Img,
+                Body = dto.Body,
+                ImgUrl = dto.ImgUrl,
             };
 
             return entity;
@@ -24,8 +24,8 @@ namespace backendAPI.Mappings
             {
                 Id = entity.Id,
                 Title = entity.Title,
-                Message = entity.Message,
-                Img = entity.Img,
+                Body = entity.Body,
+                ImgUrl = entity.ImgUrl,
             };
             
             return dto;

@@ -7,8 +7,8 @@ namespace backendAPI.DTO
         [Required]
         public string Title { get; set; }
         [Required]
-        public string Message { get; set; }
+        public string Body { get; set; }
         [Required]
-        public string Img { get; set; }
+        public string ImgUrl { get; set; }
     }
 }

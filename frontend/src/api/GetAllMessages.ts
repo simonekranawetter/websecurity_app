@@ -8,8 +8,6 @@ export async function getAllMessages(){
         });
         console.log(res)
         const result = await res.json();
-        console.log('Gandalf!');
-        console.log(result);
         return result;
     }
     catch (error: any){

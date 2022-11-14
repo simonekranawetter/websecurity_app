@@ -11,10 +11,10 @@ namespace backendAPI.Entities
         public string Title { get; set; } = string.Empty;
 
         [Required]
-        public string Message { get; set; } = string.Empty;
+        public string Body { get; set; } = string.Empty;
 
         [Required]
-        public string Img { get; set; } = string.Empty;
+        public string ImgUrl { get; set; } = string.Empty;
 
     }
 }

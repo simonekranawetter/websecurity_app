@@ -1,5 +1,4 @@
-export async function createMessage(message: string){
-    console.log('Legolas!');
+export async function createMessage(message: string){ 
     JSON.stringify(message);
 
     try {
