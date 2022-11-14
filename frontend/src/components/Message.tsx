@@ -10,7 +10,6 @@ const Message = ({
 }: {
   message: { title: string; body: string; imgUrl: string };
 }) => {
-  debugger
   return (
     <div className="message">
       <div className="message-header">

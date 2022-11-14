@@ -1,5 +1,7 @@
-import { withAuthenticationRequired } from "@auth0/auth0-react";
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { useState } from "react";
+// not sure I will use createmessage because of token retrieval
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { createMessage } from "../api/CreateMessage";
 
 const MessageForm = ({ addMessage }: any) => {
@@ -17,6 +19,13 @@ const MessageForm = ({ addMessage }: any) => {
     }));
   };
 
+  const {getAccessTokenSilently} = useAuth0();
+
+//  let token : Promise<string> | void =  getAccessTokenSilently();
+//  token = localStorage.setItem("userToken", "saved in browser storage");
+//  console.log('hi mom!');
+//  console.log(token);
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (!formData.title || !formData.body || !formData.imgUrl) {
@@ -28,8 +37,27 @@ const MessageForm = ({ addMessage }: any) => {
     const message = {
       ...formData,
     };
-    const messageToApi = JSON.stringify(message)
-    addMessage(createMessage(messageToApi));
+    const messageToApi = JSON.stringify(message);
+    const callSecureApi = async (messageToApi: string) => {
+      try{
+        const token = await getAccessTokenSilently();
+        console.log(token);
+        const res = await fetch('https://localhost:7201/api/Messages', {
+            method: 'POST',
+            headers: {
+                Authorization:"Bearer " + token,
+            },
+            body: messageToApi
+        })
+        const result = await res.json();
+        console.log(result);
+        return result;
+      }
+      catch(error:any){
+        addMessage(error);
+      }
+  }
+    addMessage(callSecureApi(messageToApi));
     e.target.reset();
   };
 

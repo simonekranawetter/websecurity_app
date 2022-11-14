@@ -1,5 +1,6 @@
 ﻿using backendAPI.DTO;
 using backendAPI.Mappings;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ namespace backendAPI.Controllers
             _context = context;
         }
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<AddMessageDto>> CreateMessage(AddMessageDto messageDto)
         {
             var messageEntity = messageDto.MapToEntity();
