@@ -1,8 +1,5 @@
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { useState } from "react";
-// not sure I will use createmessage because of token retrieval
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { createMessage } from "../api/CreateMessage";
 
 const MessageForm = ({ addMessage }: any) => {
   const [error, setError] = useState("");
