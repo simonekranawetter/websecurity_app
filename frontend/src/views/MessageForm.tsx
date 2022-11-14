@@ -21,11 +21,6 @@ const MessageForm = ({ addMessage }: any) => {
 
   const {getAccessTokenSilently} = useAuth0();
 
-//  let token : Promise<string> | void =  getAccessTokenSilently();
-//  token = localStorage.setItem("userToken", "saved in browser storage");
-//  console.log('hi mom!');
-//  console.log(token);
-
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const regex = /jpg|png$/gm;
