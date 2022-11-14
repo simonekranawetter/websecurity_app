@@ -10,11 +10,12 @@ const Message = ({
 }: {
   message: { title: string; body: string; imgUrl: string };
 }) => {
+  debugger
   return (
     <div className="message">
       <div className="message-header">
         <div className="img-container">
-          <img src={message.imgUrl} alt="beautiful blog post illustration" />
+          <img src={message.imgUrl} alt="Oh ohh,..." />
         </div>
         <h2>{message.title}</h2>
       </div>

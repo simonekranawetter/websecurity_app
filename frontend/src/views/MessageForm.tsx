@@ -1,5 +1,6 @@
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 import { useState } from "react";
+import { createMessage } from "../api/CreateMessage";
 
 const MessageForm = ({ addMessage }: any) => {
   const [error, setError] = useState("");
@@ -25,10 +26,10 @@ const MessageForm = ({ addMessage }: any) => {
     setError("");
 
     const message = {
-      id: Date.now(),
       ...formData,
     };
-    addMessage(message);
+    const messageToApi = JSON.stringify(message)
+    addMessage(createMessage(messageToApi));
     e.target.reset();
   };
 
@@ -47,7 +48,9 @@ const MessageForm = ({ addMessage }: any) => {
         <input name="imgUrl" type="text" id="imgUrl" onChange={handleChange} />
       </div>
       <p className="error-message">{error}</p>
-      <button className="btn">Send Message</button>
+      <button className="btn">
+        Send Message
+      </button>
     </form>
   );
 };
