@@ -13,6 +13,7 @@ namespace backendAPI.Controllers
     {
         private readonly ILogger<MessagesController> _logger;
         private readonly SqlContext _context;
+        private string[] _tagsAllowed = new string[] { "<b>", "</b>", "<i>", "</i>" };
 
         public MessagesController(ILogger<MessagesController> logger, SqlContext context)
         {

@@ -1,17 +1,18 @@
 ﻿using backendAPI.DTO;
 using backendAPI.Entities;
+using System.Web;
 
 namespace backendAPI.Mappings
 {
     public static class MessageMappingExtensions
-    {
+    {   
         public static MessageEntity MapToEntity(this AddMessageDto dto)
         {
             var entity = new MessageEntity
             {
                 Id = new Guid(),
                 Title = dto.Title,
-                Body = dto.Body,
+                Body = HttpUtility.HtmlEncode(dto.Body),
                 ImgUrl = dto.ImgUrl,
             };
 
