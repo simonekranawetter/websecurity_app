@@ -25,7 +25,7 @@ namespace backendAPI.Mappings
             {
                 Id = entity.Id,
                 Title = entity.Title,
-                Body = entity.Body,
+                Body = HttpUtility.HtmlEncode(entity.Body),
                 ImgUrl = entity.ImgUrl,
             };
             
