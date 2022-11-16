@@ -1,16 +1,17 @@
 import React from "react";
 import Message from "../components/Message";
+import { MessageType } from "../Types";
 
 const Messages = ({
   messages,
 }: {
-  messages: { id: string; title: string; body: string; imgUrl: string }[];
+  messages: MessageType[];
 }) => {
   return (
     <>
       <h2 className="sub-title">Messages</h2>
       {messages &&
-        messages.map((message : { id: string; title: string; body: string; imgUrl: string }) => (
+        messages.map((message : MessageType) => (
           <Message key={message.id} message={message} />
         ))}
     </>

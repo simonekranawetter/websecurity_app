@@ -1,4 +1,6 @@
-export async function getAllMessages(){
+import { MessageType } from "../Types";
+
+export async function getAllMessages(): Promise<MessageType[]> {
     try {
         const res = await fetch('https://localhost:7201/api/Messages', {
             method: 'GET',
@@ -12,5 +14,6 @@ export async function getAllMessages(){
     }
     catch (error: any){
         console.log(error);
+        return error;
     };
 }

@@ -4,9 +4,10 @@ import Messages from "./views/Messages";
 import Navbar from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
 import {getAllMessages} from "./api/GetAllMessages"
+import { MessageType } from "./Types";
 
 function App() {
-  const [messages, setMessages] = useState<Array<{id: string, title:string, body: string, imgUrl: string}>>([]);
+  const [messages, setMessages] = useState<Array<MessageType>>([]);
   useEffect(() => {
     const fetchMessage = async () => {
       setMessages(await getAllMessages())
@@ -14,12 +15,7 @@ function App() {
     fetchMessage()
   }, [])
 
-  const addMessage = (message: {
-    id: string;
-    title: string;
-    body: string;
-    imgUrl: string;
-  } ) => {
+  const addMessage = (message: MessageType ) => {
     setMessages((state) => [...state, message]);
   };
   return (
