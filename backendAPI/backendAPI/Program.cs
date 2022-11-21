@@ -16,13 +16,10 @@ builder.Services.AddEndpointsApiExplorer();
 
 
 builder.Services.AddDbContext<SqlContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Sql")));
-builder.Services.AddAuthentication(x =>
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(x =>
 {
-    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(x =>
-{
-    x.Authority = $"https://{builder.Configuration["AuthO:Domain"]}/";
+    x.Authority =builder.Configuration["AuthO:Domain"];
     x.Audience = builder.Configuration["Auth0:Audience"];
 });
 builder.Services.AddSwaggerGen(options =>
