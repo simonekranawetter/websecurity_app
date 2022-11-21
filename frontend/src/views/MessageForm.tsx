@@ -8,7 +8,6 @@ const MessageForm = ({ addMessage }: any) => {
     body: "",
     imgUrl: "",
   });
-
   const handleChange = (e: any) => {
     setFormData((data) => ({
       ...data,
@@ -16,12 +15,12 @@ const MessageForm = ({ addMessage }: any) => {
     }));
   };
 
-  const {getAccessTokenSilently} = useAuth0();
+  const { getAccessTokenSilently } = useAuth0();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    const regex = /jpg|png$/gm;
-    if(!regex.test(formData.imgUrl)){
+    const regex = /[.]jpg|[.]png$/gm;
+    if (!regex.test(formData.imgUrl)) {
       setError("Only jpg and png allowed!");
       return;
     }
@@ -36,24 +35,22 @@ const MessageForm = ({ addMessage }: any) => {
     };
     const messageToApi = JSON.stringify(message);
     const callSecureApi = async (messageToApi: string) => {
-      try{
-        const token = await getAccessTokenSilently();
+      try {
+        const token = await getAccessTokenSilently({audience: process.env.REACT_APP_AUTH0_AUDIENCE});
         console.log(token);
-        const res = await fetch('https://localhost:7201/api/Messages', {
-            method: 'POST',
-            headers: {
-                Authorization:"Bearer " + token,
-            },
-            body: messageToApi
-        })
+        const res = await fetch("https://localhost:7201/api/Messages", {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+          body: messageToApi,
+        });
         const result = await res.json();
-        console.log(result);
         return result;
-      }
-      catch(error:any){
+      } catch (error: any) {
         addMessage(error);
       }
-  }
+    };
     addMessage(callSecureApi(messageToApi));
     e.target.reset();
   };
@@ -73,9 +70,7 @@ const MessageForm = ({ addMessage }: any) => {
         <input name="imgUrl" type="text" id="imgUrl" onChange={handleChange} />
       </div>
       <p className="error-message">{error}</p>
-      <button className="btn">
-        Send Message
-      </button>
+      <button className="btn">Send Message</button>
     </form>
   );
 };

@@ -8,7 +8,6 @@ export async function getAllMessages(): Promise<MessageType[]> {
         "Content-Type": "application/json",
       },
     });
-    console.log(res);
     const result = await res.json();
     return result;
   } catch (error: any) {
