@@ -1,5 +1,6 @@
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { useState } from "react";
+import { MessageType } from "../types";
 
 const MessageForm = ({ addMessage }: any) => {
   const [error, setError] = useState("");
@@ -38,7 +39,6 @@ const MessageForm = ({ addMessage }: any) => {
       try {
         const token = await getAccessTokenSilently({audience: process.env.REACT_APP_AUTH0_AUDIENCE});
         console.log(token);
-        debugger
         const res = await fetch("https://localhost:7201/api/Messages", {
           method: "POST",
           headers: {
@@ -46,8 +46,7 @@ const MessageForm = ({ addMessage }: any) => {
           },
           body: messageToApi,
         });
-        const result = await res.json();
-        console.log(result)
+        const result: MessageType = await res.json();
         return result;
       } catch (error: any) {
         addMessage(error);
