@@ -38,6 +38,7 @@ const MessageForm = ({ addMessage }: any) => {
       try {
         const token = await getAccessTokenSilently({audience: process.env.REACT_APP_AUTH0_AUDIENCE});
         console.log(token);
+        debugger
         const res = await fetch("https://localhost:7201/api/Messages", {
           method: "POST",
           headers: {
@@ -46,6 +47,7 @@ const MessageForm = ({ addMessage }: any) => {
           body: messageToApi,
         });
         const result = await res.json();
+        console.log(result)
         return result;
       } catch (error: any) {
         addMessage(error);
