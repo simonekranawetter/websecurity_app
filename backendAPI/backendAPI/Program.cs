@@ -19,7 +19,7 @@ builder.Services.AddDbContext<SqlContext>(options => options.UseSqlServer(builde
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(x =>
 {
-    x.Authority =builder.Configuration["AuthO:Domain"];
+    x.Authority =builder.Configuration["Auth0:Domain"];
     x.Audience = builder.Configuration["Auth0:Audience"];
 });
 builder.Services.AddSwaggerGen(options =>

@@ -1,6 +1,6 @@
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { useState } from "react";
-import { MessageType } from "../types";
+import { useNavigate } from "react-router-dom";
 
 const MessageForm = ({ addMessage }: any) => {
   const [error, setError] = useState("");
@@ -9,6 +9,7 @@ const MessageForm = ({ addMessage }: any) => {
     body: "",
     imgUrl: "",
   });
+  const navigate = useNavigate();
   const handleChange = (e: any) => {
     setFormData((data) => ({
       ...data,
@@ -35,18 +36,23 @@ const MessageForm = ({ addMessage }: any) => {
       ...formData,
     };
     const messageToApi = JSON.stringify(message);
+
+    //Moved the fetch request here to avoid saving token in localstorage
     const callSecureApi = async (messageToApi: string) => {
       try {
-        const token = await getAccessTokenSilently({audience: process.env.REACT_APP_AUTH0_AUDIENCE});
+        const token = await getAccessTokenSilently({
+          audience: process.env.REACT_APP_AUTH0_AUDIENCE,
+        });
         console.log(token);
         const res = await fetch("https://localhost:7201/api/Messages", {
           method: "POST",
           headers: {
             Authorization: "Bearer " + token,
+            "Content-Type": "application/json",
           },
           body: messageToApi,
         });
-        const result: MessageType = await res.json();
+        const result = await res.json();
         return result;
       } catch (error: any) {
         addMessage(error);
@@ -54,6 +60,7 @@ const MessageForm = ({ addMessage }: any) => {
     };
     addMessage(callSecureApi(messageToApi));
     e.target.reset();
+    navigate("/");
   };
 
   return (
